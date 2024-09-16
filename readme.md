@@ -9,13 +9,28 @@ python -m venv venv
 ```
 .\venv\Scripts\Activate.ps1
 ```
-- install the requirements
+- Install the requirements
 ```
 pip install -r requirements.txt
 ```
 - Run flask server
 ```
 Flask run
+```
+
+## Database setup
+Run flask shell with `flask shell`
+The command below must be run in flask shell that is running in python environment
+- Create all table
+```
+from src.database import db
+db.create_all()
+db
+```
+- Delete all table
+```
+db.drop_all()
+db
 ```
 
 The default port is 5000
