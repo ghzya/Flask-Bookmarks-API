@@ -1,9 +1,12 @@
 # Flask API Bookmarks
 
 ## How to run
-- Create and run python environtment
+- Create python environtment 
 ```
 python -m venv venv
+```
+- Run the environtment
+```
 .\venv\Scripts\Activate.ps1
 ```
 - install the requirements
