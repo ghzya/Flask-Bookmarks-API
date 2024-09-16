@@ -17,3 +17,5 @@ pip install -r requirements.txt
 ```
 Flask run
 ```
+
+The default port is 5000
