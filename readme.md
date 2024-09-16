@@ -15,7 +15,7 @@ pip install -r requirements.txt
 ```
 - Run flask server
 ```
-Flask run
+flask run
 ```
 
 ## Database setup
