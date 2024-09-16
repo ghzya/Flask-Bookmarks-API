@@ -1,0 +1,6 @@
+.env/
+.flaskenv
+venv/
+__pycache__
+task.md
+instance

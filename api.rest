@@ -1,0 +1,107 @@
+@BASE_URL = http://127.0.0.1:5000/api/v1
+@AUTH = http://127.0.0.1:5000/api/v1/auth
+@ADMIN = http://127.0.0.1:5000/api/v1/admin
+@BOOKMARKS = http://127.0.0.1:5000/api/v1/bookmarks
+
+### AUTH
+### POST /api/v1/auth/register
+POST {{AUTH}}/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "{{EMAIL}}",
+    "username": "{{USERNAME}}",
+    "password": "{{PASSWORD}}"
+}
+
+### POST /api/v1/auth/login
+POST {{AUTH}}/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "{{EMAIL_ADMIN}}",
+    "password": "{{PASSWORD}}"
+}
+
+### GET /api/v1/auth/me
+GET {{AUTH}}/me HTTP/1.1
+Authorization: Bearer {{ADMIN_JWT_ACCESS}}
+
+### GET /api/v1/token/refresh
+GET {{AUTH}}/token/refresh HTTP/1.1
+Authorization: Bearer {{ADMIN_JWT_REFRESH}}
+
+### GET /api/v1/admin/users
+GET {{ADMIN}}/users HTTP/1.1
+Authorization: Bearer {{ADMIN_JWT_ACCESS}}
+
+### POST /api/v1/auth/<int:id>/delete
+GET {{AUTH}}/{{USER_ID}}/delete HTTP/1.1
+# Authorization: Bearer {{ADMIN_JWT_ACCESS}}
+
+
+### ADMIN
+### GET /api/v1/admin/
+GET {{ADMIN}}/ HTTP/1.1
+Authorization: Bearer {{ADMIN_JWT_ACCESS}}
+
+
+### BOOKMARKS
+### GET /api/v1/bookmarks
+GET {{BOOKMARKS}}/?page=1&per_page=6 HTTP/1.1
+Authorization: Bearer {{ADMIN_JWT_ACCESS}}
+
+### POST /api/v1/bookmarks
+POST {{BOOKMARKS}}/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{ADMIN_JWT_ACCESS}}
+
+{
+    "url": "{{BOOKMARK_URL}}",
+    "body": "{{BOOKMARK_BODY}}"
+}
+
+### GET /api/v1/bookmarks/<int:id>
+GET {{BOOKMARKS}}/{{BOOKMARK_ID}} HTTP/1.1
+Authorization: Bearer {{ADMIN_JWT_ACCESS}}
+
+### POST /api/v1/bookmarks
+PUT {{BOOKMARKS}}/{{BOOKMARK_ID}} HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{ADMIN_JWT_ACCESS}}
+
+{
+    "url": "{{BOOKMARK_URL}}",
+    "body": "{{BOOKMARK_BODY}}"
+}
+
+### GET /api/v1/bookmarks/stats
+GET {{BOOKMARKS}}/stats HTTP/1.1
+Authorization: Bearer {{ADMIN_JWT_ACCESS}}
+
+### GET /
+GET {{BASE_URL}}/apispec.json HTTP/1.1
+Authorization: Bearer {{ADMIN_JWT_ACCESS}}
+
+### GENERAL
+@ADMIN_JWT_ACCESS = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyNjIyNDEwOSwianRpIjoiMmYwM2I3N2EtYWNjYi00YTJkLWIxMmMtZjM3MWEyNDMyMDNkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzI2MjI0MTA5LCJjc3JmIjoiZGU0MTZlMTEtMWVjMy00MGMwLTk2ODAtZGNmOWFlMjFkYTY2IiwiZXhwIjoxNzI2MjI1MDA5fQ.KkUj8Cg0Oy8Lxb937vg6enObvcH2zI6H1PKS_9rOmdc
+@ADMIN_JWT_REFRESH = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyNjIyMDE5MSwianRpIjoiMzFmNGU4NzItMzNiNy00NDNkLWI0OWUtZmYyN2MyZTk1NGQ0IiwidHlwZSI6InJlZnJlc2giLCJzdWIiOjEsIm5iZiI6MTcyNjIyMDE5MSwiY3NyZiI6Ijg4ZGNhMmE2LWE4NWQtNDFhNy05NWYxLWQ5ZDJiZmM4Mzk4NiIsImV4cCI6MTcyODgxMjE5MX0.JVle5D-o34VGeIXCtNg9KqGiEqKhjhiDuUb5G1XQfdE
+@USER_ID = 5
+
+### AUTH
+@EMAIL_ADMIN = evilcrow@maldev.com
+@EMAIL = evilhorse@maldev.com
+@USERNAME = EvilHorse
+@PASSWORD = WelcomToMaldevAcademy
+
+### BOOKMARKS
+@BOOKMARK_URL = http://127.0.0.1:5000/
+@BOOKMARK_BODY = My Site auth duplicate
+@BOOKMARK_ID = 1
+
+
+
+
+
+
+

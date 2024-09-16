@@ -1,0 +1,6 @@
+flask
+python-dotenv
+Flask-SQLAlchemy
+validators
+flask-jwt-extended
+flasgger
